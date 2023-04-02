@@ -1,0 +1,520 @@
+body {
+  width: 1440px;
+  text-align: center;
+/*  background-color: #eda1a1;*/
+/*  background: linear-gradient(to bottom, skyblue, dodgerblue);*/
+  background: url('..\\images\\mosaico.png');
+  overflow: hidden;
+}
+
+.principal {
+  display: block;
+  width: 500px;
+  margin: 10px auto;
+  padding: 0;
+  text-align: center;
+  border: 1px solid #999999;
+  background: #DDDDDD;
+  border-radius: 20px; 
+}
+
+#titulo {
+  background-color: #5690fc;
+  width: 30%;
+  margin-left: 35%;
+  font: bold 36px verdana, sans-serif;
+  padding: 0;
+  border: 5px solid;
+}
+
+.start {
+  background-color: #df4566;
+  padding: 10px;
+  color: #fff;
+  transition: background-color 2s;
+  border-radius: 5px;
+  font-size: 30px;
+  display: block;     /* las siguientes líneas centran el botón */
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.start:hover {
+  background-color: #004369;
+}
+
+/*
+.start:hover:before {
+  content: 'Completed!';
+}
+
+
+.start:hover:after{
+  content: "----";
+}
+
+
+.start:focus,
+.start:active {
+  background-color: black;
+  transition: none;
+}
+*/
+
+.onPlay {
+  background-color: #97df45;
+  padding: 10px;
+  color: #1a2fee;
+  transition: background-color 2s;
+  border-radius: 5px;
+  font-size: 30px;
+  display: block;     /* las siguientes líneas centran el botón */
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.onPlay:hover {
+  background-color: #004369;
+  color: #fff;
+}
+
+.onSuspend {
+  background-color: #057518;
+  padding: 10px;
+  color: #e0dd18;
+  transition: background-color 2s;
+  border-radius: 5px;
+  font-size: 30px;
+  display: block;     /* las siguientes líneas centran el botón */
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.onSuspend:hover {
+  background-color: #8519cc;
+  color: #eba132;
+}
+
+.crono {
+  font: bold 24px verdana, sans-serif;
+/*  background-color: #97df45;*/
+  padding: 5px;
+  border: 2px solid;
+}
+
+#crono1 {
+  background-color: #97df45;
+}
+
+#crono2 {
+  background-color: #97df45;
+}
+
+
+div.topColumn {
+  float:left;
+  height: 60px;
+  position: relative;
+  padding: 15px; /* da el margen interno en "Jugador 1" y "Jugador 2" */
+}
+
+p.topTitle {
+  font-size: 18px; /* font para "Jugador 1" y "Jugador 2" */
+  width: 100%;
+}
+
+#columna1 {
+ width:29%;
+ border: 2px solid;
+ text-align: left;
+/* background-color: #97df45;*/
+}
+
+
+#columna2 {
+ width:33%;
+ border: 2px solid;
+ text-align: center;
+}
+
+#columna3 {
+ width:29%;
+ border: 2px solid;
+ text-align: right;
+/* background-color: #999999;*/
+}
+
+.Row {
+ display: inline-block; /* hace que las celdas estén una al lado de otra en cada fila */
+ background-color: rgb(218, 118, 243);
+ border: 2px solid;
+ border-bottom: 0px;
+ margin-top: -3px;
+ margin-bottom: -3px;
+}
+
+div[name="Celda"] {   /* se utiliza Selector de atributo, en este caso, el atributo es "name" */
+ float: left;
+ height: 100px;
+ width: 100px;
+ margin: 15px;	/* aplica el margen entre celdas */
+ border: solid;
+ border-width: thin;
+ background-color: #f8f8e6;
+}
+
+#Jugador_1-0 {
+ background-image: url('../images/Jugador_1-0.png');
+ background-size: 50px 50px;
+ background-position:center;
+ background-repeat:no-repeat;
+ background-color: #1cd5db;
+}
+
+#Jugador_1-1 {
+  background-image: url('../images/Jugador_1-1.png');
+  background-size: 90px 50px;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-color: #1cd5db;
+ }
+
+ #Jugador_1-2 {
+  background-image: url('../images/Jugador_1-2.png');
+  background-size: 30px 50px;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-color: #1cd5db;
+ }
+
+ #Jugador_2-0 {
+  background-image: url('../images/Jugador_2-0.png');
+  background-size: 80px 50px;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-color: #e64e20;
+ }
+ 
+ #Jugador_2-1 {
+   background-image: url('../images/Jugador_2-1.png');
+   background-size: 35px 50px;
+   background-position:center;
+   background-repeat:no-repeat;
+   background-color: #e64e20;
+  }
+ 
+  #Jugador_2-2 {
+   background-image: url('../images/Jugador_2-2.png');
+   background-size: 20px 50px;
+   background-position:center;
+   background-repeat:no-repeat;
+   background-color: #e64e20;
+  }
+
+.playerToken1 {
+  height: 120px;
+  width: 120px;
+  margin-top: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 5px;
+  background-color: #f8b6f6;
+  border: 3px inset #5690fc;
+   
+}
+
+.playerToken1:hover {
+  background-color: #8484cf;
+}
+
+.playerToken1:disabled {
+  background-color: #8484cf;
+}
+
+.playerToken2 {
+  height: 120px;
+  width: 120px;
+  margin-top: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 5px;
+  background-color: #e999e6;
+  border: 3px inset #ff3392;
+    
+}
+
+.playerToken2:hover {
+  background-color: #f53e75;
+}
+
+.playerToken2:disabled {
+  background-color: #f53e75;
+}
+
+.centradoVertical
+{
+    display: table-cell;
+    vertical-align: middle
+}
+
+
+div.circle1 {
+  margin: 5px;
+  width: 20px;
+  height: 20px;
+  background: green;
+  border-radius: 50%;
+  float: right;
+}
+div.circle2 {
+  margin: 5px;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+  float: left;
+}
+
+/* Declaraciones para Hamburger Menu */
+.container {
+  display: block;
+/*  float: left;   /* float: left haría que el menú y el header estén en la misma línea */
+/* max-width: 1320px; */
+  width: 100%;
+  margin: auto;
+}
+
+.navbar {
+  display: block;
+  width: 100%;
+  box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  height: 62px;
+}
+
+.navbar .menu-items {
+  display: flex;
+
+}
+
+.navbar .nav-container li {
+  list-style: none;
+}
+
+.navbar .nav-container a {
+  text-decoration: none;
+  color: #0e2431;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0.7rem;
+}
+
+.navbar .nav-container a:hover{
+  font-weight: bolder;
+}
+
+.nav-container {
+  display: block;
+  position: relative;
+  height: 60px;
+}
+
+.nav-container .checkbox {
+  position: absolute;
+  display: block;
+  height: 32px;
+  width: 32px;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.nav-container .hamburger-lines {
+  display: block;
+  height: 26px;
+  width: 32px;
+  position: absolute;
+  top: 17px;
+  left: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #e2d184;
+  color: #1512ad;
+  padding: 10px;
+}
+
+.nav-container .hamburger-lines .line {
+  display: block;
+  height: 4px;
+  width: 100%;
+  border-radius: 10px;
+  background: #0e2431;
+}
+
+.nav-container .hamburger-lines .line1 {
+  transform-origin: 0% 0%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.nav-container .hamburger-lines .line2 {
+  transition: transform 0.2s ease-in-out;
+}
+
+.nav-container .hamburger-lines .line3 {
+  transform-origin: 0% 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.navbar .menu-items {
+  padding-top: 40px;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+  height: 100vh;
+  width: 35%;     /* asigna el % de sombreado al abrir el menú */
+  transform: translate(-150%);
+  display: flex;
+  flex-direction: column;
+  margin-left: -40px;
+  padding-left: 50px;
+  transition: transform 0.5s ease-in-out;
+  text-align: left;
+}
+
+.navbar .menu-items li {
+  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.nav-container input[type="checkbox"]:checked ~ .menu-items {
+  transform: translateX(0);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+  margin-left: 6px;
+  transform: rotate(45deg);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+  transform: scaleY(0);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+  margin-left: 6px;
+  transform: rotate(-45deg);
+}
+
+.nav-container input[type="checkbox"]:checked ~ .logo{
+  display: none;
+}
+
+/**********************************************/
+/* INI: Configuraciones para la VENTANA MODAL */
+
+/* Fondo modal: negro con opacidad al 50% */
+.modal {
+  display: none; /* Por defecto, estará oculto */
+  position: fixed; /* Posición fija */
+  z-index: 1; /* Se situará por encima de otros elementos de la página*/
+  padding-top: 200px; /* El contenido estará situado a 200px de la parte superior */
+  left: 0;
+  top: 0;
+  width: 37%; /* Ancho de la ventana Modal respecto a la ventana Contenedora */
+  height: 100%; /* Altura completa */
+  overflow: auto; /* Se activará el scroll si es necesario */
+  background-color: rgba(0,0,0,0.5); /* Color negro con opacidad del 50% */
+}
+
+/* Ventana o caja modal */
+.contenido-modal {
+  position: relative; /* Relativo con respecto al contenedor -modal- */
+  background-color: rgb(253, 196, 196);
+  margin: auto; /* Centrada */
+  padding: 20px;
+  width: auto;
+  height: auto;
+}
+
+/* Botón cerrar */
+.close {
+  color: black;
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.pModal {
+  display: block;
+  align-content: left;
+  font-size: 20px;
+  text-align: left;
+}
+
+input {
+  width: min-content;
+  font-size: 16px;
+  text-align: left;
+}
+
+.h2Modal {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.buttonInput {
+  float: right;
+  width: 120px;
+  background-color: #bade91;
+  margin-top: 30px;
+  margin-left: 10px;
+  padding: 5px;
+  color: #010101;
+  transition: background-color 2s;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.buttonInputC {
+  float: right;
+  width: 120px;
+  background-color: #cdcbcb;
+  margin-top: 30px;
+  margin-left: 10px;
+  padding: 5px;
+  color: #010101;
+  transition: background-color 2s;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.inred {
+  margin: 0.4rem;
+  float: left;
+}
+/* FIN: Configuraciones para la VENTANA MODAL */
+/**********************************************/
