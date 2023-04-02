@@ -2,12 +2,12 @@ import express from 'express';
 const {pathname: rooty} = new URL('.', import.meta.url);
 
 const app = express();
-const myDir = (rooty.replaceAll('/', '\\')).substring(1);
+//const myDir = (rooty.replaceAll('/', '\\')).substring(1);
 
 app.use(express.static('public')); // esta línea es fundamental en Ubuntu 
 
 app.get( '/' , (req,res)=>{
-   res.sendFile( 'index.html', { root: myDir }) // en Ubuntu cambiar myDir por rooty
+   res.sendFile( 'index.html', { root: rooty }) // en Ubuntu cambiar myDir por rooty
 });
 
 import { createServer } from "http";
@@ -129,7 +129,7 @@ io.on( 'connection', (socket) => {
 
 const port = 7137;
 httpServer.listen( port , ()=>{
-   console.log(`My Server \"TacTicToe\" is running on port=${port} / folder=${myDir}\n`);
+   console.log(`My Server \"TacTicToe\" is running on port=${port} / folder=${rooty}\n`);
 });
 
 //////////////////////////
