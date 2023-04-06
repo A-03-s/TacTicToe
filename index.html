@@ -28,33 +28,115 @@
     <title>Ta-Te-Ti</title>
   </head>
 
-  <body>
-<!--  
-  Si el tag <audio> no se incluye, no aparecen los controles de audio por más 
-  que se ponga controls=true en playSound() de "main.js".
-  Y a su vez, si no se llama a playSound() desde initScript() ni aparecen
-  los controles ni tampoco funciona el audio.
-  Se desconoce porqué hay que hacer ambas cosas.
-  Los controles podrían quitarse, no incluyendo controls="true" en el tag <audio>,
-  e igualmente se iniciaría el "wav" cuando se haga click en el botón "Jugar".
+  <body class="body1">
+    <!--  
+    Si el tag <audio> no se incluye, no aparecen los controles de audio por más 
+    que se ponga controls=true en playSound() de "main.js".
+    Y a su vez, si no se llama a playSound() desde initScript() ni aparecen
+    los controles ni tampoco funciona el audio.
+    Se desconoce porqué hay que hacer ambas cosas.
+    Los controles podrían quitarse, no incluyendo controls="true" en el tag <audio>,
+    e igualmente se iniciaría el "wav" cuando se haga click en el botón "Jugar".
+    
+    <audio src="sounds/cartoon.wav" autoplay="true" controls="true" loop="true" volume="0.1">
+    
+    En la solapa de la pestaña siempre aparece un control de audio para mute y unmute
+    aunque no se habiliten los controles.  
+     <canvas id="canvas"></canvas>
   
-  <audio src="sounds/cartoon.wav" autoplay="true" controls="true" loop="true" volume="0.1">
+   
+      <audio src="sounds/cartoon.wav" autoplay="true" loop="true" volume="0.1">
+        Your browser does not support the <code>audio</code> element.
+      </audio>
+  -->
+    <div>
+      <nav>
+        <div class="navbar">
+          <div class="container nav-container">
+            <input class="checkbox" type="checkbox" aria-label="Menu" name="" id="botonMenu" />
+            <div class="hamburger-lines">
+              <span class="line line1"></span>
+              <span class="line line2"></span>
+              <span class="line line3"></span>
+            </div>
+            <div class="menu-items" id="menu-items">
+              <ul>
+                <li><a href="#ConfigModal" id="menuConfig" style="color:white" class="menu-text1" onclick="botonModalClick()">Perfil</a></li>
+                <li><a href="#ConfigTemas" id="temasConfig" style="color:white" class="menu-text1" onclick="botonTemasClick()">Temas y Piezas</a></li>
+                <li><a href="#">----</a></li>
+                <li><a href="#ConfigAcerca" id="acercaConfig" style="color:white" class="menu-text1" onclick="botonAcercaClick()">Acerca de...</a></li>
+                <li><a href="#"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <header id="principal">
+          <p id="titulo" class="titulo1"></p>
+        </header>
+      </nav>
   
-  En la solapa de la pestaña siempre aparece un control de audio para mute y unmute
-  aunque no se habiliten los controles.  
-   <canvas id="canvas"></canvas>
+      <button type="button" id="buttonStart" class="start" onclick="displayBoard()">Jugar</button>
+  
+      <br>
+  
+      <div id="colSetup" class="colSetup">
+  
+        <div id="columna1" class="topColumn">
+          <div id="turno1" class="circle"></div>
+          <span id="crono1" class="crono">10:00</span>
+          <p id=pj1 class="topTitle"></p>
+        </div>
+  
+        <div id="columna2" class="topColumn">
+          <p id=messg class="topTitle">____________________</p>
+          <br></br>
+          <div id="Fila1" class="Row1">
+            <div id="cell1" class="Cell" name="Celda" onclick="moveDst1()">
+            </div>
+            <div id="cell2" class="Cell" name="Celda" onclick="moveDst2()">
+            </div>
+            <div id="cell3" class="Cell" name="Celda" onclick="moveDst3()">
+            </div>
+          </div>
+          <div id="Fila2" class="Row1">
+            <div id="cell4" class="Cell" name="Celda" onclick="moveDst4()">
+            </div>
+            <div id="cell5" class="Cell" name="Celda" onclick="moveDst5()">
+            </div>
+            <div id="cell6" class="Cell" name="Celda" onclick="moveDst6()">
+            </div>
+          </div>
+          <div id="Fila3" class="Row1">
+            <div id="cell7" class="Cell" name="Celda" onclick="moveDst7()">
+            </div>
+            <div id="cell8" class="Cell" name="Celda" onclick="moveDst8()">
+            </div>
+            <div id="cell9" class="Cell" name="Celda" onclick="moveDst9()">
+            </div>
+          </div>
+        </div>
+  
+        <div id="columna3" class="topColumn">
+          <div id="turno2" class="circle"></div>
+          <span id="crono2" class="crono">10:00</span>
+          <p id=pj2 class="topTitle"></p>
+        </div>
+      </div>
+  
+    </div>
 
- 
-    <audio src="sounds/cartoon.wav" autoplay="true" loop="true" volume="0.1">
-      Your browser does not support the <code>audio</code> element.
-    </audio>
--->    
-<!-- INI: MARKUP PARA VENTANA MODAL -->
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+      integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+      crossorigin="anonymous"></script>
+    <script type="module" src="src/sock.js"></script>
+  
+    <!-- INI: MARKUP PARA VENTANA MODAL -->
+
     <div id="ventanaModal" class="modal">
       <div class="contenido-modal">
         <span class="close" id="closeId">&times;</span>
           <fieldset>
-            <legend><h3>Modo de Juego:</h3></legend>
+            <legend><h2>Modo de Juego:</h2></legend>
             <div>
               <input type="radio" id="enred" class="inred" name="playMode" value="true" checked>
               <label class="inred" for="html">En red</label></br>
@@ -68,88 +150,26 @@
           <button id="idButton" class="buttonInput">Aceptar</button>
       </div>
     </div>
-<!-- FIN: MARKUP PARA VENTANA MODAL -->  
 
-<div>
-
-    <nav>
-      <div class="navbar">
-        <div class="container nav-container">
-            <input class="checkbox" type="checkbox" aria-label="Menu" name="" id="botonMenu" />
-            <div class="hamburger-lines">
-              <span class="line line1"></span>
-              <span class="line line2"></span>
-              <span class="line line3"></span>
-            </div>  
-          <div class="menu-items" id="menu-items">
-            <ul>
-              <li><a href="#ConfigModal" id="menuConfig" onclick="botonModalClick()">Perfil</a></li>
-              <li><a href="#ConfigCanvas" id="canvasConfig" onclick="botonCanvasClick()">Tablero y Piezas</a></li>
-              <li><a href="#">----</a></li>
-              <li><a href="#">Acerca de...</a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </div>
-        </div>
+    <div id="ventanaModal2" class="modal">
+      <div class="contenido-modal">
+        <span class="close" id="closeId2">&times;</span>
+          <fieldset>
+            <legend><h2>Temas:</h2></legend>
+            <div>
+              <select id="temaselid" class="temasel" name="select">
+                <option value="Básico">Básico</option>
+                <option value="Merlina" selected>Merlina</option>
+                <option value="Autos">Autos Locos</option>
+              </select>
+            </div>
+          </fieldset>
+          <button id="idButtonC2" class="buttonInputC">Cancelar</button>
+          <button id="idButton2" class="buttonInput">Aceptar</button>
       </div>
-      <header id="principal">
-        <p id="titulo">Ta-Te-Ti</p>
-      </header> 
-    </nav>
+    </div>
 
-  
-    <button type="button" id="buttonStart" class="start" onclick="displayBoard()">Jugar</button>
-  
-    <br>
-    <br>
-
-	  <div id="colSetup" class="colSetup">
-
-		  <div id="columna1" class="topColumn">
-        <div id="turno1" class="circle"></div>
-        <span id="crono1" class="crono">10:00</span>
-			  <p id=pj1 class="topTitle"></p>
-		  </div>
-	  
-	    <div id="columna2" class="topColumn">
-			  <p id=messg class="topTitle">____________________</p>
-		    <br></br>
-		    <div class="Row">
-          <div id="cell1" class="Cell" name="Celda" onclick="moveDst1()">
-          </div>
-          <div id="cell2" class="Cell" name="Celda" onclick="moveDst2()">
-          </div>
-          <div id="cell3" class="Cell" name="Celda" onclick="moveDst3()">
-          </div>
-			  </div>
-        <div class="Row">
-          <div id="cell4" class="Cell" name="Celda" onclick="moveDst4()">
-          </div>
-          <div id="cell5" class="Cell" name="Celda" onclick="moveDst5()">
-          </div>
-          <div id="cell6" class="Cell" name="Celda" onclick="moveDst6()">
-          </div>
-		    </div>
-		    <div class="Row">
-          <div id="cell7" class="Cell" name="Celda" onclick="moveDst7()">
-          </div>
-          <div id="cell8" class="Cell" name="Celda" onclick="moveDst8()">
-          </div>
-          <div id="cell9" class="Cell" name="Celda" onclick="moveDst9()">
-          </div>
-		    </div>
-	    </div>
-      
-	    <div id="columna3" class="topColumn">
-        <div id="turno2" class="circle"></div>
-        <span id="crono2" class="crono">10:00</span>
-		    <p id=pj2 class="topTitle"></p>
-	    </div>
-	  </div>
-  
-</div>
-    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
-    <script type="module" src="src/sock.js"></script>
+    <!-- FIN: MARKUP PARA VENTANA MODAL -->  
 
   </body>
 

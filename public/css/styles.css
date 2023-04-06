@@ -1,10 +1,25 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700');
+
+.body {
+  text-align: center;
+  background-color: #eda1a1;
+}
+
+.body1 {
   width: 1440px;
   text-align: center;
-/*  background-color: #eda1a1;*/
+  background-color: #eda1a1;
 /*  background: linear-gradient(to bottom, skyblue, dodgerblue);*/
-  background: url('..\\images\\mosaico.png');
-  overflow: hidden;
+/*  background: url('..\\images\\mosaico.png');*/
+/*  overflow: hidden; /* oculta la barra de scroll e impide el accionar de la ruedita del mouse */
+}
+
+.body2 {
+  width: 1440px;
+  text-align: center;
+/*  background-color: #c9eda1;*/
+ /* background: url('..\\images\\mosaico.png');*/
+  background: url('..\\images\\merlina.png');
 }
 
 .principal {
@@ -18,13 +33,33 @@ body {
   border-radius: 20px; 
 }
 
-#titulo {
-  background-color: #5690fc;
-  width: 30%;
-  margin-left: 35%;
-  font: bold 36px verdana, sans-serif;
+.titulo1 {
+  background-color: #d1d4db;
+  width: 36%;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 31%;
   padding: 0;
   border: 5px solid;
+  /*
+  font-family: 'Amatic SC', sans-serif;
+  font-size: 90px;
+  font-weight: bolder;*/
+  font: bold 36px verdana, sans-serif;
+}
+
+.titulo2 {
+  background-color: #5690fc;
+  width: 36%;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 31%;
+  padding: 0;
+  border: 5px solid;
+  font-family: 'Amatic SC', sans-serif;
+  font-size: 90px;
+  font-weight: bolder;
+/*  font: bold 36px verdana, sans-serif;*/
 }
 
 .start {
@@ -35,7 +70,8 @@ body {
   border-radius: 5px;
   font-size: 30px;
   display: block;     /* las siguientes líneas centran el botón */
-  margin-top: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
@@ -71,6 +107,8 @@ body {
   border-radius: 5px;
   font-size: 30px;
   display: block;     /* las siguientes líneas centran el botón */
+  margin-top: 40px;
+  margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
@@ -89,6 +127,8 @@ body {
   border-radius: 5px;
   font-size: 30px;
   display: block;     /* las siguientes líneas centran el botón */
+  margin-top: 40px;
+  margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
   cursor: pointer;
@@ -145,17 +185,24 @@ p.topTitle {
  width:29%;
  border: 2px solid;
  text-align: right;
-/* background-color: #999999;*/
+ /*background-color: #d1d4db;*/
 }
 
-.Row {
+.Row1 {
  display: inline-block; /* hace que las celdas estén una al lado de otra en cada fila */
  background-color: rgb(218, 118, 243);
  border: 2px solid;
- border-bottom: 0px;
  margin-top: -3px;
  margin-bottom: -3px;
 }
+
+.Row2 {
+  display: inline-block; /* hace que las celdas estén una al lado de otra en cada fila */
+  background-color: rgb(60, 18, 173);
+  border: 2px solid;
+  margin-top: -3px;
+  margin-bottom: -3px;
+ }
 
 div[name="Celda"] {   /* se utiliza Selector de atributo, en este caso, el atributo es "name" */
  float: left;
@@ -167,54 +214,102 @@ div[name="Celda"] {   /* se utiliza Selector de atributo, en este caso, el atrib
  background-color: #f8f8e6;
 }
 
-#Jugador_1-0 {
- background-image: url('../images/Jugador_1-0.png');
+#Básico_1-0 {
+ background-image: url('../images/Básico_1-0.png');
  background-size: 50px 50px;
  background-position:center;
  background-repeat:no-repeat;
  background-color: #1cd5db;
 }
 
-#Jugador_1-1 {
-  background-image: url('../images/Jugador_1-1.png');
+#Básico_1-1 {
+  background-image: url('../images/Básico_1-1.png');
   background-size: 90px 50px;
   background-position:center;
   background-repeat:no-repeat;
   background-color: #1cd5db;
  }
 
- #Jugador_1-2 {
-  background-image: url('../images/Jugador_1-2.png');
+ #Básico_1-2 {
+  background-image: url('../images/Básico_1-2.png');
   background-size: 30px 50px;
   background-position:center;
   background-repeat:no-repeat;
   background-color: #1cd5db;
  }
 
- #Jugador_2-0 {
-  background-image: url('../images/Jugador_2-0.png');
+ #Básico_2-0 {
+  background-image: url('../images/Básico_2-0.png');
   background-size: 80px 50px;
   background-position:center;
   background-repeat:no-repeat;
   background-color: #e64e20;
  }
  
- #Jugador_2-1 {
-   background-image: url('../images/Jugador_2-1.png');
+ #Básico_2-1 {
+   background-image: url('../images/Básico_2-1.png');
    background-size: 35px 50px;
    background-position:center;
    background-repeat:no-repeat;
    background-color: #e64e20;
   }
  
-  #Jugador_2-2 {
-   background-image: url('../images/Jugador_2-2.png');
+  #Básico_2-2 {
+   background-image: url('../images/Básico_2-2.png');
    background-size: 20px 50px;
    background-position:center;
    background-repeat:no-repeat;
    background-color: #e64e20;
   }
 
+  #Merlina_1-0 {
+    background-image: url('../images/Merlina_1-0.png');
+    background-size: 80px 80px;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-color: #1cd5db;
+   }
+   
+   #Merlina_1-1 {
+     background-image: url('../images/Merlina_1-1.png');
+     background-size: 80px 80px;
+     background-position:center;
+     background-repeat:no-repeat;
+     background-color: #1cd5db;
+    }
+   
+    #Merlina_1-2 {
+     background-image: url('../images/Merlina_1-2.png');
+     background-size: 80px 80px;
+     background-position:center;
+     background-repeat:no-repeat;
+     background-color: #1cd5db;
+    }
+   
+    #Merlina_2-0 {
+     background-image: url('../images/Merlina_2-0.png');
+     background-size: 80px 80px;
+     background-position:center;
+     background-repeat:no-repeat;
+     background-color: #e64e20;
+    }
+    
+    #Merlina_2-1 {
+      background-image: url('../images/Merlina_2-1.png');
+      background-size: 80px 80px;
+      background-position:center;
+      background-repeat:no-repeat;
+      background-color: #e64e20;
+     }
+    
+     #Merlina_2-2 {
+      background-image: url('../images/Merlina_2-2.png');
+      background-size: 80px 80px;
+      background-position:center;
+      background-repeat:no-repeat;
+      background-color: #e64e20;
+     }
+   
 .playerToken1 {
   height: 120px;
   width: 120px;
@@ -303,18 +398,28 @@ div.circle2 {
 
 .navbar .menu-items {
   display: flex;
+}
 
+.menu-text1 {
+  font-family: verdana, sans-serif;
+  font-size: 24px;
+}
+
+.menu-text2 {
+  font-family: 'Amatic SC';
+  font-size: 36px;
 }
 
 .navbar .nav-container li {
   list-style: none;
+  margin-top: 20px;
 }
 
 .navbar .nav-container a {
   text-decoration: none;
   color: #0e2431;
-  font-weight: 500;
-  font-size: 1.2rem;
+/*  font-weight: 500;
+  font-size: 1.2rem;*/
   padding: 0.7rem;
 }
 
@@ -352,6 +457,7 @@ div.circle2 {
   flex-direction: column;
   justify-content: space-between;
   background-color: #e2d184;
+  border: 3px solid;
   color: #1512ad;
   padding: 10px;
 }
@@ -394,8 +500,8 @@ div.circle2 {
 
 .navbar .menu-items li {
   margin-bottom: 1.2rem;
-  font-size: 1.5rem;
-  font-weight: 500;
+/*  font-size: 1.5rem;
+  font-weight: 500;*/
 }
 
 .nav-container input[type="checkbox"]:checked ~ .menu-items {
@@ -513,8 +619,16 @@ input {
 }
 
 .inred {
+  font-size: 18px;
   margin: 0.4rem;
   float: left;
 }
+
+.temasel {
+  font-size: 18px;
+  margin: 0.4rem;
+  float: left;
+}
+
 /* FIN: Configuraciones para la VENTANA MODAL */
 /**********************************************/

@@ -1,4 +1,5 @@
 import { setNickName, initModal,botonModalClick,player1NickName,inNet,setInNet } from "./modal.js";
+import { initTemas,botonTemasClick,setTema,getTema } from "./temas.js";
 //import * as vModal from "./modal.js";
 import { initConfetti,botonConfiClick } from "./confi.js";
 import { sendMsg,sendMove,socketSt,dataChallenger,moveRemote,remoteMove,setMoveRemote,set_socketSt } from "./sock.js";
@@ -188,8 +189,11 @@ window.addEventListener('DOMContentLoaded', function(event){
 	let menuConfig = document.getElementById(`menuConfig`);
 	menuConfig.onclick = botonModalClick;
 
-	let canvasConfig = document.getElementById(`canvasConfig`);
-	canvasConfig.onclick = botonConfiClick;
+	let temasConfig = document.getElementById(`temasConfig`);
+	temasConfig.onclick = botonTemasClick;
+
+	let acercaConfig = document.getElementById(`acercaConfig`);
+	acercaConfig.onclick = botonAcercaClick;
 
 	////////////////////////
 	// Carga los eventos onclick de cada celda con las funciones asociadas que se identifican con el número de celda
@@ -226,6 +230,17 @@ window.addEventListener('DOMContentLoaded', function(event){
 		setInNet(false);
 	}
 	console.log("inNet: ", inNet);
+
+	myCookieR = readCookie( "Tema");
+	console.log("tema: ", myCookieR);
+	if( myCookieR === "") {
+		setTema("Básico");
+	}
+	else {
+		setTema(myCookieR);
+	}
+	console.log("Tema: ", getTema());
+
 	////////////////////////
 
 	////////////////////////
@@ -236,10 +251,6 @@ window.addEventListener('DOMContentLoaded', function(event){
     }
 	sendMsg( "connected", propMsg);
 	////////////////////////
-
-	document.getElementById(`columna1`).style.backgroundColor = "#f5f830";
-	document.getElementById(`columna2`).style.backgroundColor = "#f8f8e6";
-	document.getElementById(`columna3`).style.backgroundColor = "#f5f830";
 
 	let wrapper = document.querySelector('.start');	
 	wrapper.addEventListener('mouseover', displayTxt);
@@ -256,6 +267,7 @@ window.addEventListener('DOMContentLoaded', function(event){
 	localStorage.setItem('inMenu', 'false');
 
 	initModal();
+	initTemas();
 
 	initConfetti();
 
@@ -438,6 +450,7 @@ function unfrezzePlay() {
 		
 }
 
+
 /////////////////////////////
 // abreMenu(): función llamada cada vez que se hace click en el menú de hamburguesa y se utiliza
 // para lo siguiente:
@@ -454,7 +467,7 @@ function abreMenu() {
 	else
 		unfrezzePlay();	
 
-	inNetPrev=inNet;
+//	inNetPrev=inNet;
 }
 
 ////////////////////////
@@ -533,6 +546,8 @@ function waitChallengerMove() {
 	if( socketSt == 3) {
 		console.log( `waitChallengerMove(): Recibió indicación challenger desconectado`);
 		clearInterval(interMove);
+		backgroundMusic.muted = true;
+		clearInterval(interClock);
 		alert( "El jugador remoto se desconectó. Habrá que reiniciar.");
 		wndReload();
 	}
@@ -709,8 +724,8 @@ function displayBoardInNet1() {
 	let tokensPlayer_2 = document.getElementById('columna3');
 
 	for( let i=0; i<3; i++) {
-		tokensPlayer_1.appendChild( tk.player1[i] = createToken("Jugador_1-" + i, 1));
-		tokensPlayer_2.appendChild( tk.player2[i] = createToken("Jugador_2-" + i, 2));
+		tokensPlayer_1.appendChild( tk.player1[i] = createToken( getTema() + "_1-" + i, 1));
+		tokensPlayer_2.appendChild( tk.player2[i] = createToken( getTema() + "_2-" + i, 2));
 	}
 
 	gameSt = 1;
@@ -746,8 +761,8 @@ function displayBoard() {
 	let tokensPlayer_2 = document.getElementById('columna3');
 
 	for( let i=0; i<3; i++) {
-		tokensPlayer_1.appendChild( tk.player1[i] = createToken("Jugador_1-" + i, 1));
-		tokensPlayer_2.appendChild( tk.player2[i] = createToken("Jugador_2-" + i, 2));
+		tokensPlayer_1.appendChild( tk.player1[i] = createToken( getTema() + "_1-" + i, 1));
+		tokensPlayer_2.appendChild( tk.player2[i] = createToken( getTema() + "_2-" + i, 2));
 	}
 
 	// Inicialización de los elementos asociados a la turnera
@@ -790,9 +805,9 @@ function createToken( playerName, playerIndex) {
 	token.onclick = moveOrg;
 	
 	let tokenImage = document.createElement('img');
-	tokenImage.src = 'images/'+token.id+'.png';
+	tokenImage.src = 'images/' + playerName + ".png";
 	token.appendChild(tokenImage);
-//	console.log(`createToken(): tokenId = ${token.id}`);
+
 	return token;
 }
 
@@ -859,9 +874,17 @@ function moveOrg() {
 	cellOrg = this;
 //	cellMsj = document.getElementById('messg');
 
-	if( cellOrg.id.slice(0,-2) != turnPlay) {	// Controla que la ficha a mover sea del jugador que tiene el turno
-		console.log( "moveOrg(): Debe mover el jugador que tiene el turno.");
-		cellMsj.innerHTML = "<b>Atención:</b> Debe mover el jugador que tiene el turno."
+	let i = cellOrg.id.indexOf("_");
+	let dueñoFicha = "Jugador_" + cellOrg.id[i+1];
+	if( dueñoFicha != turnPlay) {	// Controla que la ficha a mover sea del jugador que tiene el turno
+		if( inNet === true && gameSt == 1) {
+			console.log( "moveOrg(): Debe esperar a que aparezca un retador.");
+			cellMsj.innerHTML = "<b>Atención:</b> Debe esperar a que aparezca un retador."
+		}
+		else {
+			console.log( "moveOrg(): Debe mover el jugador que tiene el turno.");
+			cellMsj.innerHTML = "<b>Atención:</b> Debe mover el jugador que tiene el turno."
+		}
 		cellOrg = null;
 		return;
 	}
@@ -986,7 +1009,9 @@ function mngCellClick( cellClickIndex) {
 			return;
 		}
 
-		if (cellDst.id.slice(0, -2) != turnPlay) {	// Controla que la ficha a mover sea del jugador que tiene el turno
+		let i = cellDst.id.indexOf("_");
+		let dueñoFicha = "Jugador_" + cellDst.id[i+1];
+		if (dueñoFicha != turnPlay) {	// Controla que la ficha a mover sea del jugador que tiene el turno
 			console.log( `moveDst(${cellClickIndex}): Debe mover el jugador que tiene el turno.`);
 			cellMsj.innerHTML = "<b>Atención:</b> Debe mover el jugador que tiene el turno."
 			cellOrg = null;
@@ -1159,23 +1184,30 @@ function isTacTicToe() {
 			) {
 			backgroundMusic.muted = true;
 			clearInterval(interClock);
-			if( inNet == false)
-				cellMsj.innerHTML = `<b>Atención: </b>Ganó el ${turnPlay}`;
 
-			if( inNet === true && inNetPlayer !== turnPlay) {
-				cellMsj.innerHTML = `<b>Atención: </b>Perdiste, lo siento...`;
-				console.log(`isTacTicToe(): Ganó el jugador remoto...`);
-				gameoverMusic = playSound2('../sounds/gameover.mp3', "0.5");
-				setTimeout( stopMusic, 3000);
+			if( inNet === true) {
+				clearInterval(interMove);
+				if (inNetPlayer !== turnPlay) {
+					cellMsj.innerHTML = `<b>Atención: </b>Perdiste, lo siento...`;
+					console.log(`isTacTicToe(): Ganó el jugador remoto...`);
+					gameoverMusic = playSound2('../sounds/gameover.mp3', "0.5");
+					setTimeout(stopMusic, 3000);
+				}
+				else {
+					cellMsj.innerHTML = `<b>Atención: </b>Ganaste, felicitaciones!!!`;
+					console.log(`isTacTicToe(): ${player1NickName} hizo TaTeTi --- GAME OVER ---`);
+					ovationMusic = playSound2('../sounds/aplausos.mp3', "0.5");
+					setTimeout(stopMusic, 32000);
+					botonConfiClick();
+				}
 			}
 			else {
-				cellMsj.innerHTML = `<b>Atención: </b>Ganaste, felicitaciones!!!`;
-				console.log( `isTacTicToe(): El ${turnPlay} hizo TaTeTi --- GAME OVER ---`);
+				cellMsj.innerHTML = `<b>Atención: </b>Ganó ${player1NickName}`;
+				console.log(`isTacTicToe(): ${player1NickName} hizo TaTeTi --- GAME OVER ---`);
 				ovationMusic = playSound2('../sounds/aplausos.mp3', "0.5");
-				setTimeout( stopMusic, 32000);
+				setTimeout(stopMusic, 32000);
 				botonConfiClick();
 			}
-
 
 			inMenu = true;	// Se pone inMenu en true para deshabilitar las celdas del tablero
 			frezzePlay();
@@ -1214,4 +1246,36 @@ function stopMusic() {
 	let $wrapper = document.querySelector('.onSuspend');
 	$wrapper.addEventListener('mouseover', displayTxt2);
 	$wrapper.addEventListener('mouseout', removeTxt2);
+}
+
+const {pathname: rooty} = new URL('.', import.meta.url);
+const myDir = (rooty.replaceAll('/', '\\')).substring(1);
+
+function botonAcercaClick() {
+	document.getElementById(`botonMenu`).click();	// Simula un click en el menú de hamburguesa para cerrarlo
+
+	let win = window.open("", "", "toolbar=false,scrollbars=false,resizable=0,top=400,left=600,width=300,height=300");
+//	let Fondo = "background: url('..\\images\\mosaico.png')";		// No funciona porque no encuentra el archivo
+	let Fondo = "background-color:eda1a1";
+
+	console.log( `botonAcercaClick(): myDir = ${myDir}`);
+
+	//	<body style="${Fondo} overflow:hidden">
+
+	let html = 
+	`
+	<! DOCTYPE html>
+	<head>
+		<title>Ta-Te-Ti</title>
+	</head>
+	<body style="${Fondo}">
+		<h1 style="color:cian" align=center>Vero Ta-Te-Ti</h1>
+		<div align=center>
+			<img height=100 width=100 align=center src="..\\images\\logo.png">
+		</div>
+		<h4 style="color:cian" align=center>@2023 ~ Would you like it?</h4>
+	</body>
+	</html>
+	`;
+	win.document.write(html);
 }

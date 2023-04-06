@@ -52,8 +52,8 @@ function playerConfigModalAceptar() {
 
 	console.log(`playerConfigModalAceptar(): Jugador = ${player1NickName}, Modo de Juego = ${inNetNew}`);
 
-	spanModalClick();	// Cierra la ventana modal simulando un click en la 
-	document.getElementById(`botonMenu`).click();	// Simula un click en el menú de hamburguesa para cerrarlo
+	spanModalClick();	// Cierra la ventana modal simulando un click en la x
+//	document.getElementById(`botonMenu`).click();	// Simula un click en el menú de hamburguesa para cerrarlo
 
 	// Si hay un cambio en la modalidad de juego en red se reinicia la página (aplicación)
 	// para actualizar la información en el server
@@ -65,6 +65,7 @@ function playerConfigModalAceptar() {
 
 function playerConfigModalCancelar() {
 	spanModalClick();	// Cierra la ventana modal simulando un click en la x
+//	document.getElementById(`botonMenu`).click();	// Simula un click en el menú de hamburguesa para cerrarlo
 }
 
 // Cuando el usuario hace click en el botón, se abre la ventana
@@ -79,6 +80,7 @@ export function botonModalClick() {
 function spanModalClick() {
 	modal.style.display = "none";
 	buttonMenu.disabled = false;
+	document.getElementById(`botonMenu`).click();	// Simula un click en el menú de hamburguesa para cerrarlo
 }
 
 

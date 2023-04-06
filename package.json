@@ -1,6 +1,6 @@
 {
   "name": "tactictoe",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Juego TaTeTi migrado a Ubuntu con canvas y socket",
   "type": "module",
   "scripts": {
