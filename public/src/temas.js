@@ -29,7 +29,7 @@ function temasAceptar() {
 
 	// Si hay un cambio en el tema seleccionado se reinicia la página (aplicación)
 	// para actualizar la información en el server
-	if( temaSelect !== temaSelectNew && temaSelectNew != "Autos") {
+	if( temaSelect !== temaSelectNew /*&& temaSelectNew != "Autos"*/) {
 		let myCookieW = `Tema=${temaSelectNew}; expires=31 Dec 2023 23:59:59 GMT;SameSite=Lax;`;
 		document.cookie = myCookieW;	
 		temaSelect = temaSelectNew;		// En realidad no haría falta porque ya quedó guardado en las cookies
@@ -137,6 +137,25 @@ function drawTema() {
 			document.getElementById(`Fila1`).className = "Row2";
 			document.getElementById(`Fila2`).className = "Row2";
 			document.getElementById(`Fila3`).className = "Row2";
+			break;
+		case "Autos":
+			console.log("drawTema(): tema seleccionado Autos");
+			document.body.className = "body3";
+			titu = document.getElementById("titulo");
+			titu.className = "titulo3";
+			titu.innerText = "Autos Locos ¨ Ta~Te~Ti";
+			document.getElementById(`columna1`).style.backgroundColor = "#87acfc";
+			document.getElementById(`columna2`).style.backgroundColor = "#abaeb4";
+			document.getElementById(`columna3`).style.backgroundColor = "#87acfc";
+			document.getElementById(`menuConfig`).className = "menu-text3";
+			document.getElementById(`menuConfig`).style = "color: black";
+			document.getElementById(`temasConfig`).className = "menu-text3";
+			document.getElementById(`temasConfig`).style = "color: black";
+			document.getElementById(`acercaConfig`).className = "menu-text3";
+			document.getElementById(`acercaConfig`).style = "color: black";
+			document.getElementById(`Fila1`).className = "Row3";
+			document.getElementById(`Fila2`).className = "Row3";
+			document.getElementById(`Fila3`).className = "Row3";
 			break;
 		default:
 			console.log("drawTema(): ERROR - tema seleccionado desconocido");

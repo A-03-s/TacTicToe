@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700');
+@import url('https://fonts.cdnfonts.com/css/luminari');
 
 .body {
   text-align: center;
@@ -20,6 +21,13 @@
 /*  background-color: #c9eda1;*/
  /* background: url('..\\images\\mosaico.png');*/
   background: url('..\\images\\merlina.png');
+}
+
+.body3 {
+  width: 1440px;
+  text-align: center;
+/*  background-color: #c9eda1;*/
+  background: url('..\\images\\mosaico_autos_locos.png');
 }
 
 .principal {
@@ -62,6 +70,23 @@
 /*  font: bold 36px verdana, sans-serif;*/
 }
 
+.titulo3 {
+  background-color: #d1d4db;
+  width: 36%;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 31%;
+  padding: 0;
+  border: 5px solid;
+  /*
+  font-family: 'Amatic SC', sans-serif;
+  font-size: 90px;
+  font-weight: bolder;*/
+  font-family: 'Luminari', sans-serif;
+  font-size: 36px;
+  font-weight: bolder;
+}
+
 .start {
   background-color: #df4566;
   padding: 10px;
@@ -100,6 +125,21 @@
 */
 
 .onPlay {
+  background-color: #97df45;
+  padding: 10px;
+  color: #1a2fee;
+  transition: background-color 2s;
+  border-radius: 5px;
+  font-size: 30px;
+  display: block;     /* las siguientes líneas centran el botón */
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.onWaiting {
   background-color: #97df45;
   padding: 10px;
   color: #1a2fee;
@@ -204,6 +244,14 @@ p.topTitle {
   margin-bottom: -3px;
  }
 
+ .Row3 {
+  display: inline-block; /* hace que las celdas estén una al lado de otra en cada fila */
+  background-color: rgb(23, 173, 18);
+  border: 2px solid;
+  margin-top: -3px;
+  margin-bottom: -3px;
+ }
+ 
 div[name="Celda"] {   /* se utiliza Selector de atributo, en este caso, el atributo es "name" */
  float: left;
  height: 100px;
@@ -215,101 +263,149 @@ div[name="Celda"] {   /* se utiliza Selector de atributo, en este caso, el atrib
 }
 
 #Básico_1-0 {
- background-image: url('../images/Básico_1-0.png');
- background-size: 50px 50px;
- background-position:center;
- background-repeat:no-repeat;
- background-color: #1cd5db;
+  background-image: url('../images/Básico_1-0.png');
+  background-size: 50px 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1cd5db;
 }
 
 #Básico_1-1 {
   background-image: url('../images/Básico_1-1.png');
   background-size: 90px 50px;
-  background-position:center;
-  background-repeat:no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
   background-color: #1cd5db;
- }
+}
 
- #Básico_1-2 {
+#Básico_1-2 {
   background-image: url('../images/Básico_1-2.png');
   background-size: 30px 50px;
-  background-position:center;
-  background-repeat:no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
   background-color: #1cd5db;
- }
+}
 
- #Básico_2-0 {
+#Básico_2-0 {
   background-image: url('../images/Básico_2-0.png');
   background-size: 80px 50px;
-  background-position:center;
-  background-repeat:no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
   background-color: #e64e20;
- }
- 
- #Básico_2-1 {
-   background-image: url('../images/Básico_2-1.png');
-   background-size: 35px 50px;
-   background-position:center;
-   background-repeat:no-repeat;
-   background-color: #e64e20;
-  }
- 
-  #Básico_2-2 {
-   background-image: url('../images/Básico_2-2.png');
-   background-size: 20px 50px;
-   background-position:center;
-   background-repeat:no-repeat;
-   background-color: #e64e20;
-  }
+}
 
-  #Merlina_1-0 {
-    background-image: url('../images/Merlina_1-0.png');
-    background-size: 80px 80px;
-    background-position:center;
-    background-repeat:no-repeat;
-    background-color: #1cd5db;
-   }
-   
-   #Merlina_1-1 {
-     background-image: url('../images/Merlina_1-1.png');
-     background-size: 80px 80px;
-     background-position:center;
-     background-repeat:no-repeat;
-     background-color: #1cd5db;
-    }
-   
-    #Merlina_1-2 {
-     background-image: url('../images/Merlina_1-2.png');
-     background-size: 80px 80px;
-     background-position:center;
-     background-repeat:no-repeat;
-     background-color: #1cd5db;
-    }
-   
-    #Merlina_2-0 {
-     background-image: url('../images/Merlina_2-0.png');
-     background-size: 80px 80px;
-     background-position:center;
-     background-repeat:no-repeat;
-     background-color: #e64e20;
-    }
-    
-    #Merlina_2-1 {
-      background-image: url('../images/Merlina_2-1.png');
-      background-size: 80px 80px;
-      background-position:center;
-      background-repeat:no-repeat;
-      background-color: #e64e20;
-     }
-    
-     #Merlina_2-2 {
-      background-image: url('../images/Merlina_2-2.png');
-      background-size: 80px 80px;
-      background-position:center;
-      background-repeat:no-repeat;
-      background-color: #e64e20;
-     }
-   
+#Básico_2-1 {
+  background-image: url('../images/Básico_2-1.png');
+  background-size: 35px 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e64e20;
+}
+
+#Básico_2-2 {
+  background-image: url('../images/Básico_2-2.png');
+  background-size: 20px 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e64e20;
+}
+
+#Merlina_1-0 {
+  background-image: url('../images/Merlina_1-0.png');
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1cd5db;
+}
+
+#Merlina_1-1 {
+  background-image: url('../images/Merlina_1-1.png');
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1cd5db;
+}
+
+#Merlina_1-2 {
+  background-image: url('../images/Merlina_1-2.png');
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1cd5db;
+}
+
+#Merlina_2-0 {
+  background-image: url('../images/Merlina_2-0.png');
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e64e20;
+}
+
+#Merlina_2-1 {
+  background-image: url('../images/Merlina_2-1.png');
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e64e20;
+}
+
+#Merlina_2-2 {
+  background-image: url('../images/Merlina_2-2.png');
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e64e20;
+}
+
+#Autos_1-0 {
+  background-image: url('../images/Autos_1-0.png');
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1cd5db;
+}
+
+#Autos_1-1 {
+  background-image: url('../images/Autos_1-1.png');
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1cd5db;
+}
+
+#Autos_1-2 {
+  background-image: url('../images/Autos_1-2.png');
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1cd5db;
+}
+
+#Autos_2-0 {
+  background-image: url('../images/Autos_2-0.png');
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e64e20;
+}
+
+#Autos_2-1 {
+  background-image: url('../images/Autos_2-1.png');
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e64e20;
+}
+
+#Autos_2-2 {
+  background-image: url('../images/Autos_2-2.png');
+  background-size: 80px 80px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e64e20;
+}
+
 .playerToken1 {
   height: 120px;
   width: 120px;
@@ -408,6 +504,12 @@ div.circle2 {
 .menu-text2 {
   font-family: 'Amatic SC';
   font-size: 36px;
+}
+
+.menu-text3 {
+  font-family: 'Luminari';
+  font-size: 24px;
+  background-color:#8484cf
 }
 
 .navbar .nav-container li {

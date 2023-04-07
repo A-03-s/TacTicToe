@@ -682,16 +682,19 @@ let waitToggle = true;		// Toggle utilizado para controlar el blink del mensaje
 function waitChallenger() {
 	if( socketSt == 2) {
 		clearInterval(interWaitChallenger);
+		buttonStart.innerHTML = "Jugando";
 		cellMsj.innerHTML = "_______________________";
 		displayBoardInNet2();
 	}
 	else {
 		if( waitToggle == true) {
 			waitToggle = false;
-			cellMsj.innerHTML = "Esperando al retador...";
+			buttonStart.innerHTML = "-------------";
+			cellMsj.innerHTML = "==> Esperando al retador ...";
 		}
 		else {
 			waitToggle = true;
+			buttonStart.innerHTML = "Esperando";
 			cellMsj.innerHTML = "_______________________";
 		}
 	}
@@ -718,6 +721,12 @@ function displayBoardInNet1() {
 	}
 	sendMsg("challenge", propMsg);
 
+	buttonStart.className = "onWaiting";
+	buttonStart.innerHTML = "Esperando";
+	let $wrapper = document.querySelector('.onWaiting');
+	$wrapper.removeEventListener('mouseover', displayTxt);
+	$wrapper.removeEventListener('mouseout', removeTxt);
+	
 	interWaitChallenger = setInterval( waitChallenger, 500);
 
 	let tokensPlayer_1 = document.getElementById('columna1');
@@ -1254,7 +1263,7 @@ const myDir = (rooty.replaceAll('/', '\\')).substring(1);
 function botonAcercaClick() {
 	document.getElementById(`botonMenu`).click();	// Simula un click en el menú de hamburguesa para cerrarlo
 
-	let win = window.open("", "", "toolbar=false,scrollbars=false,resizable=0,top=400,left=600,width=300,height=300");
+	let win = window.open("", "", "toolbar=false,scrollbars=false,resizable=0,top=590,left=810,width=300,height=300");
 //	let Fondo = "background: url('..\\images\\mosaico.png')";		// No funciona porque no encuentra el archivo
 	let Fondo = "background-color:eda1a1";
 
